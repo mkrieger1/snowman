@@ -1,4 +1,5 @@
-from strings import string_is_rectangular
+from strings import string_is_rectangular, string_join_horizontal
+from random import choice
 
 SNOWMAN = '\n'.join(
   (' HHHHH ',
@@ -53,11 +54,16 @@ def snowman(code):
     return ''.join(next(sections[c]) if c in sections else c
                    for c in SNOWMAN)
 
+def random_code():
+    """Return a random code suitable for creating a snowman."""
+    return ''.join(choice('1234') for _ in range(8))
+
+def random_snowman_grid(rows, columns):
+    """Return rows * columns snowmen arranged in a grid."""
+    def snowman_row():
+        codes = (random_code() for _ in range(columns))
+        return string_join_horizontal(map(snowman, codes), ' ')
+    return '\n\n'.join(snowman_row() for _ in range(rows))
+
 if __name__=='__main__':
-    from sys import argv
-    from random import choice
-    if not len(argv) > 1:
-        code = ''.join(choice('1234') for _ in range(8))
-    else:
-        code = argv[1]
-    print snowman(code)
+    print random_snowman_grid(5, 15)
