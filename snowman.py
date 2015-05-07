@@ -37,8 +37,8 @@ SECTIONS = {
 }
 
 def snowman(code):
-    """Return the ASCII art snowman corresponding to the 8-digit input
-    code given as a string. Each of the digits selects one of four
+    """Return the ASCII art snowman corresponding to the 8-character input
+    code given as a string. Each character from '1234' selects one of four
     possible variants for each of the snowman's sections.
     """
     if not len(code) == 8 and all(c in '1234' for c in code):
