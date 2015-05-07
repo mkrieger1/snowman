@@ -1,3 +1,5 @@
+from strings import string_is_rectangular
+
 SNOWMAN = '\n'.join(
   (' HHHHH ',
    ' HHHHH ',
@@ -35,6 +37,7 @@ SECTIONS = [
 ]
 
 assert all(len(variants) == 4 for _, variants in SECTIONS)
+assert string_is_rectangular(SNOWMAN)
 
 def snowman(code):
     """Return the ASCII art snowman specified by the 8-character input
