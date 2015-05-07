@@ -42,8 +42,8 @@ def snowman(code):
     possible variants for each of the snowman's sections.
     """
     if not len(code) == 8 and all(c in '1234' for c in code):
-        raise ValueError("The input code must comprise 8 characters "
-                         "from '1234'")
+        raise ValueError("The input code must consist of 8 characters "
+                         "from '1234'.")
     sections = {k: SECTIONS[k][int(i)-1] for k, i in zip('HNLRXYTB', code)}
     def generate_snowman():
         count = Counter()
