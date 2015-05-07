@@ -44,13 +44,8 @@ def snowman(code):
                          "from '1234'.")
     sections = {k: iter(SECTIONS[k][int(i)-1])
                 for k, i in zip('HNLRXYTB', code)}
-    def generate_snowman():
-        for c in SNOWMAN:
-            if c in sections:
-                yield next(sections[c])
-            else:
-                yield c
-    return ''.join(generate_snowman())
+    return ''.join(next(sections[c]) if c in sections else c
+                   for c in SNOWMAN)
 
 if __name__=='__main__':
     from sys import argv
