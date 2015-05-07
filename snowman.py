@@ -54,3 +54,12 @@ def snowman(code):
             else:
                 yield c
     return ''.join(generate_snowman())
+
+if __name__=='__main__':
+    from sys import argv
+    from random import choice
+    if not len(argv) > 1:
+        code = ''.join(choice('1234') for _ in range(8))
+    else:
+        code = argv[1]
+    print snowman(code)
