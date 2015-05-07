@@ -1,1 +1,1 @@
-Draw ASCII art snowpeople, as described at this [code golf challenge](http://codegolf.stackexchange.com/q/49671), although not actually doing the code golf.
+Draw ASCII art snowpeople, as described in this [code golf challenge](http://codegolf.stackexchange.com/q/49671), although not actually doing the code golf.
