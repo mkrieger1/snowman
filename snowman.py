@@ -1,3 +1,5 @@
+from collections import Counter
+
 SNOWMAN = '\n'.join(
   (' HHHHH ',
    ' HHHHH ',
@@ -40,4 +42,16 @@ def snowman(code):
     code given as a string. Each of the digits selects one of four
     possible variants for each of the snowman's sections.
     """
-    pass
+    if not len(code) == 8 and all(c in '1234' for c in code):
+        raise ValueError("The input code must comprise 8 characters "
+                         "from '1234'")
+    sections = {k: SECTIONS[k][int(i)-1] for k, i in zip('HNLRXYTB', code)}
+    def generate_snowman():
+        count = Counter()
+        for c in SNOWMAN:
+            if c in sections:
+                yield sections[c][count[c]]
+                count[c] += 1
+            else:
+                yield c
+    return ''.join(generate_snowman())
