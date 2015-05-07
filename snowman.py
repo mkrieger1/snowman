@@ -39,7 +39,7 @@ def snowman(code):
     code given as a string. Each character from '1234' selects one of four
     possible variants for each of the snowman's sections.
     """
-    if not len(code) == 8 and all(c in '1234' for c in code):
+    if not (len(code) == 8 and all(c in '1234' for c in code)):
         raise ValueError("The input code must consist of 8 characters "
                          "from '1234'.")
     sections = {k: iter(SECTIONS[k][int(i)-1])
