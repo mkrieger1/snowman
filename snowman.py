@@ -19,8 +19,7 @@ HAT = [
    r'(_*_)')
 ]
 NOSE = ',._ '
-EYE_LEFT = '.oO-'
-EYE_RIGHT = EYE_LEFT
+EYE_LEFT = EYE_RIGHT = '.oO-'
 ARM_LEFT = [' <', r'\ ', ' /', '  ']
 ARM_RIGHT = [' >', '/ ', ' \\', '  ']
 TORSO = [' : ', '] [', '> <', '   ']
