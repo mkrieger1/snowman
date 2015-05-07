@@ -23,16 +23,18 @@ ARM_RIGHT = [' >', '/ ', ' \\', '  ']
 TORSO = [' : ', '] [', '> <', '   ']
 BASE = [' : ', '" "', '___', '   ']
 
-SECTIONS = {
-  'H': HAT,
-  'N': NOSE,
-  'L': EYE_LEFT,
-  'R': EYE_RIGHT,
-  'X': ARM_LEFT,
-  'Y': ARM_RIGHT,
-  'T': TORSO,
-  'B': BASE
-}
+SECTIONS = [
+  ('H', HAT),
+  ('N', NOSE),
+  ('L', EYE_LEFT),
+  ('R', EYE_RIGHT),
+  ('X', ARM_LEFT),
+  ('Y', ARM_RIGHT),
+  ('T', TORSO),
+  ('B', BASE)
+]
+
+assert all(len(variants) == 4 for _, variants in SECTIONS)
 
 def snowman(code):
     """Return the ASCII art snowman specified by the 8-character input
@@ -43,8 +45,8 @@ def snowman(code):
     if not (len(code) == 8 and all(c in '1234' for c in code)):
         raise ValueError("The input code must consist of 8 characters "
                          "from '1234'.")
-    sections = {k: iter(SECTIONS[k][int(i)-1])
-                for k, i in zip('HNLRXYTB', code)}
+    sections = {letter: iter(variants[int(i)-1])
+                for (letter, variants), i in zip(SECTIONS, code)}
     return ''.join(next(sections[c]) if c in sections else c
                    for c in SNOWMAN)
 
